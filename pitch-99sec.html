@@ -28,35 +28,27 @@
       transform-style: preserve-3d;
     }
     .course-box {
-      background: rgba(15, 23, 42, 0.97);
-      border: 2px solid rgba(0,0,0,0.8);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+      background: rgba(15, 23, 42, 0.95);
+      border: 2px solid rgba(0,0,0,0.7);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .course-box:hover {
-      box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-    }
-    .course-hero {
-      font-size: 1.6rem;
-      padding: 1.25rem 1.5rem;
-      z-index: 30;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
     }
     .course-front {
-      font-size: 1.3rem;
-      padding: 1rem 1.25rem;
-      z-index: 20;
+      font-size: 1.75rem;
+      padding: 1.25rem 1.5rem;
     }
     .course-mid {
-      font-size: 1.05rem;
-      padding: 0.75rem 1rem;
+      font-size: 1.35rem;
+      padding: 1rem 1.25rem;
       opacity: 0.8;
-      z-index: 10;
     }
-    .course-edge {
-      font-size: 0.85rem;
-      padding: 0.5rem 0.75rem;
+    .course-back {
+      font-size: 1.1rem;
+      padding: 0.75rem 1rem;
       opacity: 0.55;
-      z-index: 5;
     }
     /* Logo bars */
     .logo-bars {
@@ -163,49 +155,48 @@
   <!-- SLIDE 5: Course Cloud (15 sec) -->
   <section class="slide flex-col justify-center items-center p-8">
     <div class="text-center w-full">
-      <h2 class="text-5xl font-bold mb-6">Real courses people actually need</h2>
-      <div class="course-cloud relative w-full max-w-6xl h-[540px] mx-auto">
+      <h2 class="text-5xl font-bold mb-8">Real courses people actually need</h2>
+      <div class="course-cloud relative w-full max-w-6xl h-[500px] mx-auto">
         
-        <!-- EDGES - small, scattered around perimeter -->
-        <div class="course-box course-edge absolute rounded-lg" style="top: 3%; left: 2%; transform: rotate(-8deg);">
+        <!-- BACK ROW - smaller, faded, top of screen -->
+        <div class="course-box course-back absolute rounded-xl" style="top: 0%; left: 5%; transform: rotate(-3deg);">
           <span>💼</span> First Week at New Job
         </div>
-        <div class="course-box course-edge absolute rounded-lg" style="top: 8%; right: 4%; transform: rotate(12deg);">
+        <div class="course-box course-back absolute rounded-xl" style="top: 3%; left: 38%; transform: rotate(2deg);">
           <span>😰</span> Mind Goes Blank?
         </div>
-        <div class="course-box course-edge absolute rounded-lg" style="bottom: 8%; left: 1%; transform: rotate(6deg);">
+        <div class="course-box course-back absolute rounded-xl" style="top: 0%; right: 8%; transform: rotate(4deg);">
           <span>💬</span> Giving Difficult Feedback
         </div>
-        <div class="course-box course-edge absolute rounded-lg" style="bottom: 5%; right: 2%; transform: rotate(-10deg);">
-          <span>📊</span> Understanding Your 401k
-        </div>
 
-        <!-- MID RING - medium, between center and edges -->
-        <div class="course-box course-mid absolute rounded-xl" style="top: 18%; left: 8%; transform: rotate(-4deg);">
+        <!-- MID ROW -->
+        <div class="course-box course-mid absolute rounded-xl" style="top: 22%; left: 2%; transform: rotate(-2deg);">
           <span class="text-purple-400">🧠</span> Why Some Get Promoted
         </div>
-        <div class="course-box course-mid absolute rounded-xl" style="top: 15%; right: 12%; transform: rotate(7deg);">
+        <div class="course-box course-mid absolute rounded-xl" style="top: 25%; left: 36%; transform: rotate(3deg);">
           <span class="text-pink-400">🏠</span> Reading a Lease
         </div>
-        <div class="course-box course-mid absolute rounded-xl" style="bottom: 22%; left: 5%; transform: rotate(5deg);">
-          <span class="text-orange-400">🎭</span> Reading the Room
-        </div>
-        <div class="course-box course-mid absolute rounded-xl" style="bottom: 18%; right: 8%; transform: rotate(-6deg);">
-          <span class="text-yellow-400">📋</span> How Insurance Works
+        <div class="course-box course-mid absolute rounded-xl" style="top: 20%; right: 3%; transform: rotate(-4deg);">
+          <span class="text-blue-400">📊</span> Understanding Your 401k
         </div>
 
-        <!-- CENTER HEROES - big, overlapping, chaotic angles -->
-        <div class="course-box course-hero absolute rounded-xl" style="top: 38%; left: 15%; transform: rotate(-3deg);">
+        <!-- FRONT ROW - large, prominent -->
+        <div class="course-box course-front absolute rounded-xl" style="top: 48%; left: 0%; transform: rotate(2deg);">
           <span class="text-emerald-400">💰</span> How to Do Your Taxes
         </div>
-        <div class="course-box course-hero absolute rounded-xl" style="top: 35%; right: 18%; transform: rotate(5deg);">
+        <div class="course-box course-front absolute rounded-xl" style="top: 50%; left: 35%; transform: rotate(-2deg);">
           <span class="text-cyan-400">🤖</span> AI Without the Hype
         </div>
-        <div class="course-box course-front absolute rounded-xl" style="top: 55%; left: 28%; transform: rotate(2deg);">
-          <span class="text-green-400">🎯</span> Asking for a Raise
+        <div class="course-box course-front absolute rounded-xl" style="top: 46%; right: 2%; transform: rotate(3deg);">
+          <span class="text-orange-400">🎭</span> Reading the Room
         </div>
-        <div class="course-box course-front absolute rounded-xl" style="top: 58%; right: 25%; transform: rotate(-4deg);">
-          <span class="text-blue-400">💳</span> Why Credit Cards Give You "Free" Money
+
+        <!-- VERY FRONT - hero courses -->
+        <div class="course-box course-front absolute rounded-xl" style="top: 76%; left: 5%; transform: rotate(-3deg); font-size: 1.9rem;">
+          <span class="text-yellow-400">📋</span> How Insurance Works
+        </div>
+        <div class="course-box course-front absolute rounded-xl" style="top: 78%; right: 8%; transform: rotate(2deg); font-size: 1.9rem;">
+          <span class="text-green-400">🎯</span> Asking for a Raise
         </div>
       </div>
     </div>
