@@ -24,18 +24,33 @@
     }
     /* 3D Course Cloud */
     .course-cloud {
-      perspective: 1000px;
+      perspective: 1200px;
       transform-style: preserve-3d;
     }
     .course-box {
-      background: rgba(30, 41, 59, 0.9);
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(4px);
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .course-box:hover {
-      transform: translateZ(20px) scale(1.05);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    }
+    .course-front {
+      font-size: 1.5rem;
+      padding: 1.25rem 1.5rem;
+      border-color: rgba(139, 92, 246, 0.3);
+    }
+    .course-mid {
+      font-size: 1.1rem;
+      padding: 0.875rem 1.125rem;
+      opacity: 0.85;
+    }
+    .course-back {
+      font-size: 0.9rem;
+      padding: 0.625rem 0.875rem;
+      opacity: 0.6;
+      border-color: rgba(255,255,255,0.08);
     }
     /* Logo bars */
     .logo-bars {
@@ -66,7 +81,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 2: The Problem (20 sec) -->
+  <!-- SLIDE 2: The Problem (15 sec) -->
   <section class="slide flex-col justify-center items-center p-12">
     <div class="text-center max-w-5xl">
       <h2 class="text-7xl font-bold mb-16 leading-tight">
@@ -81,7 +96,34 @@
     </div>
   </section>
 
-  <!-- SLIDE 3: The Solution (15 sec) -->
+  <!-- SLIDE 3: The Learning Gap (10 sec) -->
+  <section class="slide flex-col justify-center items-center p-12">
+    <div class="max-w-5xl text-center">
+      <h2 class="text-5xl font-bold mb-12">Current options don't work</h2>
+      <div class="grid grid-cols-3 gap-8 mb-10">
+        <div class="bg-slate-900/80 rounded-2xl p-8 border border-slate-800">
+          <div class="text-5xl mb-4">📖</div>
+          <h3 class="font-semibold text-2xl mb-2">Books</h3>
+          <p class="text-slate-400 text-lg">300 pages for 3 insights</p>
+        </div>
+        <div class="bg-slate-900/80 rounded-2xl p-8 border border-slate-800">
+          <div class="text-5xl mb-4">🎬</div>
+          <h3 class="font-semibold text-2xl mb-2">YouTube</h3>
+          <p class="text-slate-400 text-lg">10 videos, still confused</p>
+        </div>
+        <div class="bg-slate-900/80 rounded-2xl p-8 border border-slate-800">
+          <div class="text-5xl mb-4">🎓</div>
+          <h3 class="font-semibold text-2xl mb-2">Courses</h3>
+          <p class="text-slate-400 text-lg">40 hours for one skill</p>
+        </div>
+      </div>
+      <p class="text-3xl text-slate-300">
+        People want <span class="text-purple-400 font-semibold">one thing</span>, quickly, without the fluff.
+      </p>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: The Solution (15 sec) -->
   <section class="slide flex-col justify-center items-center p-12">
     <div class="text-center max-w-5xl">
       <!-- Mini logo -->
@@ -112,59 +154,57 @@
     </div>
   </section>
 
-  <!-- SLIDE 4: Course Cloud (15 sec) -->
+  <!-- SLIDE 5: Course Cloud (15 sec) -->
   <section class="slide flex-col justify-center items-center p-8">
-    <div class="text-center">
-      <h2 class="text-5xl font-bold mb-10">Real courses people actually need</h2>
-      <div class="course-cloud relative w-full max-w-6xl h-[500px] mx-auto">
-        <!-- Row 1 - back -->
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 5%; left: 5%; transform: translateZ(-60px) rotateY(-5deg) rotateX(3deg);">
-          <span class="text-emerald-400">💰</span> How to Do Your Taxes
-        </div>
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 8%; left: 38%; transform: translateZ(-40px) rotateY(3deg);">
-          <span class="text-blue-400">🎯</span> Asking for a Raise
-        </div>
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 2%; right: 8%; transform: translateZ(-50px) rotateY(5deg) rotateX(-2deg);">
-          <span class="text-purple-400">🧠</span> Why Some Get Promoted
-        </div>
+    <div class="text-center w-full">
+      <h2 class="text-5xl font-bold mb-8">Real courses people actually need</h2>
+      <div class="course-cloud relative w-full max-w-6xl h-[520px] mx-auto">
         
-        <!-- Row 2 - mid back -->
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 25%; left: 12%; transform: translateZ(-20px) rotateY(-3deg);">
-          <span class="text-pink-400">🏠</span> Reading a Lease
+        <!-- BACK ROW - smaller, faded -->
+        <div class="course-box course-back absolute rounded-xl" style="top: 2%; left: 8%; transform: translateZ(-80px) rotateY(-4deg);">
+          <span class="text-slate-500">💼</span> First Week at New Job
         </div>
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 28%; left: 52%; transform: translateZ(-30px) rotateY(4deg) rotateX(2deg);">
+        <div class="course-box course-back absolute rounded-xl" style="top: 5%; left: 45%; transform: translateZ(-70px) rotateY(2deg);">
+          <span class="text-slate-500">😰</span> Mind Goes Blank?
+        </div>
+        <div class="course-box course-back absolute rounded-xl" style="top: 0%; right: 12%; transform: translateZ(-75px) rotateY(4deg);">
+          <span class="text-slate-500">💬</span> Giving Difficult Feedback
+        </div>
+
+        <!-- MID ROW - medium -->
+        <div class="course-box course-mid absolute rounded-xl" style="top: 22%; left: 3%; transform: translateZ(-30px) rotateY(-3deg);">
           <span class="text-cyan-400">🤖</span> AI Without the Hype
         </div>
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 22%; right: 5%; transform: translateZ(-10px) rotateY(6deg);">
+        <div class="course-box course-mid absolute rounded-xl" style="top: 25%; left: 40%; transform: translateZ(-25px) rotateY(2deg);">
+          <span class="text-blue-400">📊</span> Understanding Your 401k
+        </div>
+        <div class="course-box course-mid absolute rounded-xl" style="top: 20%; right: 5%; transform: translateZ(-35px) rotateY(5deg);">
+          <span class="text-pink-400">🏠</span> Reading a Lease
+        </div>
+
+        <!-- FRONT ROW - large, prominent -->
+        <div class="course-box course-front absolute rounded-xl" style="top: 48%; left: 2%; transform: translateZ(30px) rotateY(-2deg);">
+          <span class="text-emerald-400">💰</span> How to Do Your Taxes
+        </div>
+        <div class="course-box course-front absolute rounded-xl" style="top: 52%; left: 38%; transform: translateZ(40px) rotateY(1deg);">
+          <span class="text-purple-400">🧠</span> Why Some Get Promoted
+        </div>
+        <div class="course-box course-front absolute rounded-xl" style="top: 46%; right: 3%; transform: translateZ(25px) rotateY(3deg);">
           <span class="text-orange-400">🎭</span> Reading the Room
         </div>
-        
-        <!-- Row 3 - mid front -->
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 48%; left: 3%; transform: translateZ(10px) rotateY(-4deg) rotateX(-2deg);">
+
+        <!-- VERY FRONT - hero courses -->
+        <div class="course-box course-front absolute rounded-xl border-purple-500/40" style="top: 75%; left: 8%; transform: translateZ(60px) rotateY(-1deg); font-size: 1.6rem;">
           <span class="text-yellow-400">📋</span> How Insurance Works
         </div>
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 52%; left: 35%; transform: translateZ(30px) rotateY(2deg);">
-          <span class="text-red-400">😰</span> Mind Goes Blank?
-        </div>
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 45%; right: 10%; transform: translateZ(20px) rotateY(5deg) rotateX(3deg);">
-          <span class="text-lime-400">💼</span> First Week at New Job
-        </div>
-        
-        <!-- Row 4 - front -->
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 72%; left: 8%; transform: translateZ(50px) rotateY(-6deg) rotateX(-3deg);">
-          <span class="text-violet-400">💬</span> Giving Difficult Feedback
-        </div>
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 75%; left: 42%; transform: translateZ(40px) rotateY(3deg);">
-          <span class="text-teal-400">📊</span> Understanding Your 401k
-        </div>
-        <div class="course-box absolute rounded-xl px-5 py-4 text-xl font-medium" style="top: 70%; right: 3%; transform: translateZ(60px) rotateY(4deg) rotateX(2deg);">
-          <span class="text-rose-400">🤝</span> Negotiating Salary
+        <div class="course-box course-front absolute rounded-xl border-purple-500/40" style="top: 78%; right: 10%; transform: translateZ(55px) rotateY(2deg); font-size: 1.6rem;">
+          <span class="text-green-400">🎯</span> Asking for a Raise
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SLIDE 5: Pricing (10 sec) -->
+  <!-- SLIDE 6: Pricing (10 sec) -->
   <section class="slide flex-col justify-center items-center p-12">
     <div class="text-center max-w-5xl">
       <h2 class="text-5xl font-bold mb-10">One-time. Lifetime access.</h2>
@@ -190,7 +230,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 6: Traction (15 sec) -->
+  <!-- SLIDE 7: Traction (15 sec) -->
   <section class="slide flex-col justify-center items-center p-12">
     <div class="text-center">
       <h2 class="text-6xl font-bold mb-16">This isn't an idea.<br/><span class="gradient-text">It's live.</span></h2>
@@ -211,12 +251,12 @@
     </div>
   </section>
 
-  <!-- SLIDE 7: CTA + Questions (20 sec) -->
+  <!-- SLIDE 8: CTA + Questions (20 sec) -->
   <section class="slide flex-col justify-center items-center p-12">
     <div class="text-center">
       <h2 class="text-5xl font-bold mb-6">Try it right now</h2>
       <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://skillbites.xyz&bgcolor=0f172a&color=ffffff" alt="QR" class="mx-auto rounded-2xl mb-6">
-      <p class="text-5xl font-bold gradient-text mb-3">skillbites.xyz</p>
+      <p class="text-5xl font-bold gradient-text mb-3">https://skillbites.xyz</p>
       <p class="text-2xl text-slate-400 mb-12">Learn the stuff school never taught you.</p>
       <p class="text-4xl font-semibold text-slate-300">Questions?</p>
     </div>
@@ -224,7 +264,7 @@
 
   <!-- ========== BONUS SLIDES (Q&A) ========== -->
   
-  <!-- SLIDE 8: Homepage Screenshot -->
+  <!-- SLIDE 9: Homepage Screenshot -->
   <section class="slide flex-col justify-center items-center p-8 bg-slate-900">
     <div class="text-center">
       <p class="text-sm text-slate-500 mb-4">BONUS: Homepage</p>
@@ -234,7 +274,7 @@
     </div>
   </section>
 
-  <!-- SLIDE 9: Course Page Screenshot -->
+  <!-- SLIDE 10: Course Page Screenshot -->
   <section class="slide flex-col justify-center items-center p-8 bg-slate-900">
     <div class="text-center">
       <p class="text-sm text-slate-500 mb-4">BONUS: Course Experience</p>
