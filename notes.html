@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaker Notes - SkillBites Pitch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .note-card {
+      background: #1e293b;
+      border-left: 4px solid #8b5cf6;
+    }
+    .note-card.active {
+      border-left-color: #22c55e;
+      background: #1a2e1a;
+    }
+    .current-indicator {
+      background: #22c55e;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white p-4 min-h-screen">
+  <div class="max-w-lg mx-auto">
+    <div class="flex items-center justify-between mb-6 sticky top-0 bg-slate-950 py-2 z-10">
+      <h1 class="text-xl font-bold">📋 Speaker Notes</h1>
+      <div class="flex gap-2">
+        <button onclick="prevSlide()" class="bg-slate-800 px-4 py-2 rounded-lg text-sm">← Prev</button>
+        <button onclick="nextSlide()" class="bg-purple-600 px-4 py-2 rounded-lg text-sm">Next →</button>
+      </div>
+    </div>
+
+    <div class="text-center mb-6">
+      <span class="text-4xl font-bold text-purple-400" id="slideNum">1</span>
+      <span class="text-slate-500 text-lg"> / 12</span>
+    </div>
+
+    <div id="notes-container" class="space-y-4">
+      <!-- Notes will be injected here -->
+    </div>
+
+    <div class="mt-8 text-center text-slate-500 text-sm">
+      <p>Swipe or use buttons to navigate</p>
+      <p class="mt-2">Tip: Keep this on your phone while presenting</p>
+    </div>
+  </div>
+
+  <script>
+    const notesData = [
+      {
+        slide: 1,
+        title: "Title",
+        notes: "Hook: 'What if everything useful you needed to know as an adult fit into 10-minute lessons?' Pause for effect. Don't rush this slide."
+      },
+      {
+        slide: 2,
+        title: "The Problem",
+        notes: "Make it personal: 'Raise your hand if you learned how to do taxes in school.' (nobody will). 'How about reading a lease? Negotiating salary?' Build the tension. Everyone relates to this."
+      },
+      {
+        slide: 3,
+        title: "The Gap",
+        notes: "Current solutions suck. Books = too long. YouTube = rabbit hole, no structure. Udemy = 40 hours for something you need in 10 minutes. The format is broken, not the content."
+      },
+      {
+        slide: 4,
+        title: "The Solution",
+        notes: "This is the reveal. Emphasize: 10 minutes, not 10 hours. 300+ courses already live. It's not video — it's structured micro-lessons with quiz and exercises. Real learning, not passive watching."
+      },
+      {
+        slide: 5,
+        title: "Course Series",
+        notes: "Don't read all of these — just gesture at the breadth. Pick 2-3 that resonate with THIS audience. Hidden Curriculum is great for professionals. 'What To Do When' is universally relatable."
+      },
+      {
+        slide: 6,
+        title: "Sample Courses",
+        notes: "These are the 'aha' examples. Read a few out loud. Watch faces light up. 'Why Some People Get Promoted' always gets a reaction. These are Googleable but never well-answered."
+      },
+      {
+        slide: 7,
+        title: "Target Market",
+        notes: "Three personas, but really it's anyone who's ever felt 'I should know this by now.' The quote at the bottom is the universal insight. Let it land."
+      },
+      {
+        slide: 8,
+        title: "Pricing",
+        notes: "New tiered model. Entry point is $5 — impulse buy. Specialized tracks for specific needs. All Access bundle for power users. No subscriptions = trust. Freemium model: browse everything, advanced courses show locked."
+      },
+      {
+        slide: 9,
+        title: "Competitive Advantage",
+        notes: "The table tells the story. We're the only ones who are: (1) bite-sized, (2) structured, (3) focused on life skills, (4) one-time payment. That's our moat."
+      },
+      {
+        slide: 10,
+        title: "Traction",
+        notes: "This is proof we're not vaporware. 300+ courses LIVE. Full platform built. AI pipeline means we can scale content fast. If investors: emphasize the scalable production."
+      },
+      {
+        slide: 11,
+        title: "Vision",
+        notes: "Show the roadmap. Now = ready to launch. Q2 = scale content. Q4 = enterprise/B2B. 2027 = platform play. Adjust emphasis based on audience (investors want scale, users want features)."
+      },
+      {
+        slide: 12,
+        title: "CTA",
+        notes: "End strong. Repeat the URL. 'Questions?' then shut up and let them ask. Have the site open on your phone ready to demo if they want to see it."
+      }
+    ];
+
+    let currentSlide = 0;
+
+    function renderNotes() {
+      const container = document.getElementById('notes-container');
+      container.innerHTML = notesData.map((note, i) => `
+        <div class="note-card rounded-xl p-4 ${i === currentSlide ? 'active' : ''}" id="note-${i}">
+          <div class="flex items-center gap-2 mb-2">
+            ${i === currentSlide ? '<div class="current-indicator w-2 h-2 rounded-full"></div>' : ''}
+            <span class="text-slate-500 text-sm">Slide ${note.slide}</span>
+            <span class="font-semibold">${note.title}</span>
+          </div>
+          <p class="text-amber-300 text-sm leading-relaxed">${note.notes}</p>
+        </div>
+      `).join('');
+      
+      document.getElementById('slideNum').textContent = currentSlide + 1;
+      
+      // Scroll current note into view
+      document.getElementById(`note-${currentSlide}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % notesData.length;
+      renderNotes();
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + notesData.length) % notesData.length;
+      renderNotes();
+    }
+
+    // Swipe support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX);
+    document.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextSlide();
+        else prevSlide();
+      }
+    });
+
+    // Keyboard support
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    renderNotes();
+  </script>
+</body>
+</html>

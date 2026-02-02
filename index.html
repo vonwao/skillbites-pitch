@@ -52,15 +52,79 @@
       color: rgba(255,255,255,0.3);
       font-size: 14px;
     }
+    /* Speaker notes */
+    .notes-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      z-index: 101;
+    }
+    .notes-toggle:hover { background: rgba(255,255,255,0.2); }
+    .speaker-notes {
+      display: none;
+      position: fixed;
+      bottom: 60px;
+      left: 20px;
+      right: 20px;
+      background: rgba(0,0,0,0.9);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      color: #fbbf24;
+      font-size: 14px;
+      max-height: 150px;
+      overflow-y: auto;
+      z-index: 100;
+    }
+    .speaker-notes.visible { display: block; }
+    .speaker-notes h4 { 
+      font-size: 10px; 
+      text-transform: uppercase; 
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 8px;
+    }
+    /* Notes-only mode */
+    body.notes-only .slide { display: none !important; }
+    body.notes-only .speaker-notes { 
+      display: block !important;
+      position: relative;
+      bottom: auto;
+      left: auto;
+      right: auto;
+      margin: 20px;
+      max-height: none;
+    }
+    body.notes-only .progress-bar,
+    body.notes-only .nav-hint { display: none; }
+    body.notes-only { 
+      background: #111;
+      overflow: auto;
+    }
+    body.notes-only .notes-container {
+      display: block;
+    }
+    .notes-container { display: none; }
   </style>
 </head>
 <body class="bg-slate-950 text-white overflow-hidden">
   <div class="progress-bar" id="progress"></div>
   <div class="slide-counter" id="counter"></div>
-  <div class="nav-hint">← → or click to navigate</div>
+  <div class="nav-hint">← → to navigate • N for notes • M for notes-only</div>
+  <button class="notes-toggle" onclick="toggleNotes()">Notes (N)</button>
+
+  <!-- Notes-only mode container -->
+  <div class="notes-container" id="allNotes"></div>
 
   <!-- Slide 1: Title -->
-  <section class="slide active flex-col justify-center items-center p-8" id="slide-1">
+  <section class="slide active flex-col justify-center items-center p-8" id="slide-1" data-notes="Hook: 'What if everything useful you needed to know as an adult fit into 10-minute lessons?' Pause for effect. Don't rush this slide.">
     <div class="text-center max-w-4xl">
       <div class="text-7xl mb-6">📚</div>
       <h1 class="text-7xl font-black mb-6 gradient-text">SkillBites</h1>
@@ -70,7 +134,7 @@
   </section>
 
   <!-- Slide 2: The Problem -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-2">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-2" data-notes="Make it personal: 'Raise your hand if you learned how to do taxes in school.' (nobody will). 'How about reading a lease? Negotiating salary?' Build the tension. Everyone relates to this.">
     <div class="max-w-5xl">
       <h2 class="text-5xl font-bold mb-12 text-center">The Problem</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -102,7 +166,7 @@
   </section>
 
   <!-- Slide 3: The Gap -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-3">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-3" data-notes="Current solutions suck. Books = too long. YouTube = rabbit hole, no structure. Udemy = 40 hours for something you need in 10 minutes. The format is broken, not the content.">
     <div class="max-w-5xl text-center">
       <h2 class="text-5xl font-bold mb-12">The Learning Gap</h2>
       <div class="grid grid-cols-3 gap-6 mb-12">
@@ -129,7 +193,7 @@
   </section>
 
   <!-- Slide 4: The Solution -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-4">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-4" data-notes="This is the reveal. Emphasize: 10 minutes, not 10 hours. 300+ courses already live. It's not video — it's structured micro-lessons with quiz and exercises. Real learning, not passive watching.">
     <div class="max-w-5xl text-center">
       <h2 class="text-5xl font-bold mb-6">The Solution</h2>
       <p class="text-2xl text-slate-400 mb-12">Micro-learning for practical life skills</p>
@@ -140,7 +204,7 @@
           <p class="text-slate-400">minutes per course</p>
         </div>
         <div class="text-center">
-          <div class="text-6xl font-black gradient-text mb-2">316+</div>
+          <div class="text-6xl font-black gradient-text mb-2">300+</div>
           <p class="text-slate-400">courses live</p>
         </div>
         <div class="text-center">
@@ -148,8 +212,8 @@
           <p class="text-slate-400">curated series</p>
         </div>
         <div class="text-center">
-          <div class="text-6xl font-black gradient-text mb-2">$5</div>
-          <p class="text-slate-400">lifetime access</p>
+          <div class="text-6xl font-black gradient-text mb-2">5</div>
+          <p class="text-slate-400">learning tracks</p>
         </div>
       </div>
 
@@ -178,7 +242,7 @@
   </section>
 
   <!-- Slide 5: Course Series -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-5">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-5" data-notes="Don't read all of these — just gesture at the breadth. Pick 2-3 that resonate with THIS audience. Hidden Curriculum is great for professionals. 'What To Do When' is universally relatable.">
     <div class="max-w-6xl">
       <h2 class="text-5xl font-bold mb-12 text-center">Course Library</h2>
       <div class="grid grid-cols-3 gap-4">
@@ -251,7 +315,7 @@
   </section>
 
   <!-- Slide 6: Example Courses -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-6">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-6" data-notes="These are the 'aha' examples. Read a few out loud. Watch faces light up. 'Why Some People Get Promoted' always gets a reaction. These are Googleable but never well-answered.">
     <div class="max-w-5xl">
       <h2 class="text-5xl font-bold mb-6 text-center">Sample Courses</h2>
       <p class="text-xl text-slate-400 text-center mb-12">Real skills people search for but never find a good answer</p>
@@ -286,7 +350,7 @@
   </section>
 
   <!-- Slide 7: Target Market -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-7">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-7" data-notes="Three personas, but really it's anyone who's ever felt 'I should know this by now.' The quote at the bottom is the universal insight. Let it land.">
     <div class="max-w-5xl">
       <h2 class="text-5xl font-bold mb-12 text-center">Who It's For</h2>
       
@@ -317,40 +381,53 @@
     </div>
   </section>
 
-  <!-- Slide 8: Business Model -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-8">
-    <div class="max-w-4xl text-center">
-      <h2 class="text-5xl font-bold mb-12">Simple Pricing</h2>
+  <!-- Slide 8: Pricing Tiers -->
+  <section class="slide flex-col justify-center items-center p-8" id="slide-8" data-notes="New tiered model. Entry point is $5 — impulse buy. Specialized tracks for specific needs. All Access bundle for power users. No subscriptions = trust. Freemium model: browse everything, advanced courses show locked.">
+    <div class="max-w-5xl text-center">
+      <h2 class="text-5xl font-bold mb-8">Learning Tracks</h2>
+      <p class="text-xl text-slate-400 mb-10">One-time payment. Lifetime access. No subscriptions.</p>
       
-      <div class="card rounded-3xl p-12 mb-12 border-purple-500/30">
-        <div class="text-8xl font-black gradient-text mb-4">$4.99</div>
-        <p class="text-2xl text-slate-300 mb-6">One payment. Lifetime access.</p>
-        <div class="flex justify-center gap-8 text-slate-400">
-          <span>✓ All 316+ courses</span>
-          <span>✓ Future courses included</span>
-          <span>✓ No subscription</span>
+      <div class="grid grid-cols-5 gap-4 mb-10">
+        <div class="card rounded-2xl p-6 border-green-500/30">
+          <div class="text-3xl font-black text-green-400 mb-2">$5</div>
+          <h3 class="font-semibold mb-2">Life Skills</h3>
+          <p class="text-slate-400 text-xs">Core adulting + basic AI</p>
+        </div>
+        <div class="card rounded-2xl p-6 border-blue-500/30">
+          <div class="text-3xl font-black text-blue-400 mb-2">$7</div>
+          <h3 class="font-semibold mb-2">College Grad</h3>
+          <p class="text-slate-400 text-xs">Career launch + finance</p>
+        </div>
+        <div class="card rounded-2xl p-6 border-cyan-500/30">
+          <div class="text-3xl font-black text-cyan-400 mb-2">$10</div>
+          <h3 class="font-semibold mb-2">Uber-Geek</h3>
+          <p class="text-slate-400 text-xs">Tech deep-dives</p>
+        </div>
+        <div class="card rounded-2xl p-6 border-orange-500/30">
+          <div class="text-3xl font-black text-orange-400 mb-2">$15</div>
+          <h3 class="font-semibold mb-2">Homeowner</h3>
+          <p class="text-slate-400 text-xs">First home essentials</p>
+        </div>
+        <div class="card rounded-2xl p-6 border-purple-500/30">
+          <div class="text-3xl font-black text-purple-400 mb-2">$20</div>
+          <h3 class="font-semibold mb-2">Advanced AI</h3>
+          <p class="text-slate-400 text-xs">Build with AI</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-3 gap-6 text-left">
-        <div class="card rounded-xl p-6">
-          <h3 class="font-semibold mb-2">Why one-time?</h3>
-          <p class="text-slate-400 text-sm">Builds trust. No subscription fatigue. Impulse-friendly price point.</p>
-        </div>
-        <div class="card rounded-xl p-6">
-          <h3 class="font-semibold mb-2">Why $4.99?</h3>
-          <p class="text-slate-400 text-sm">"Less than a coffee." Low friction, high perceived value.</p>
-        </div>
-        <div class="card rounded-xl p-6">
-          <h3 class="font-semibold mb-2">Future tiers</h3>
-          <p class="text-slate-400 text-sm">Team/enterprise plans. B2B corporate training partnerships.</p>
-        </div>
+      <div class="card rounded-2xl p-8 border-pink-500/50 bg-gradient-to-r from-purple-900/20 to-pink-900/20 max-w-md mx-auto mb-8">
+        <div class="text-4xl font-black gradient-text mb-2">$39</div>
+        <h3 class="font-semibold text-lg mb-2">All Access</h3>
+        <p class="text-slate-400 text-sm">Every track. Every course. Forever.</p>
+        <p class="text-green-400 text-xs mt-2">Save $18</p>
       </div>
+
+      <p class="text-slate-500 text-sm">Browse free • Premium courses show 🔒 until unlocked</p>
     </div>
   </section>
 
   <!-- Slide 9: Competitive Advantage -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-9">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-9" data-notes="The table tells the story. We're the only ones who are: (1) bite-sized, (2) structured, (3) focused on life skills, (4) one-time payment. That's our moat.">
     <div class="max-w-5xl">
       <h2 class="text-5xl font-bold mb-12 text-center">Why We Win</h2>
       
@@ -412,13 +489,13 @@
   </section>
 
   <!-- Slide 10: Traction -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-10">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-10" data-notes="This is proof we're not vaporware. 300+ courses LIVE. Full platform built. AI pipeline means we can scale content fast. If investors: emphasize the scalable production.">
     <div class="max-w-4xl text-center">
       <h2 class="text-5xl font-bold mb-12">Current State</h2>
       
       <div class="grid grid-cols-2 gap-8 mb-12">
         <div class="card rounded-2xl p-8">
-          <div class="text-5xl font-black gradient-text mb-2">316+</div>
+          <div class="text-5xl font-black gradient-text mb-2">300+</div>
           <p class="text-slate-400">Courses Published</p>
         </div>
         <div class="card rounded-2xl p-8">
@@ -438,8 +515,8 @@
       <div class="card rounded-xl p-6 text-left">
         <h3 class="font-semibold mb-4">Built & Ready:</h3>
         <div class="grid grid-cols-2 gap-4 text-slate-400">
-          <span>✓ Full web app (Next.js 16)</span>
-          <span>✓ Payment integration (Gumroad)</span>
+          <span>✓ Full web app (Next.js)</span>
+          <span>✓ Payment integration</span>
           <span>✓ User auth & progress tracking</span>
           <span>✓ Course generation pipeline</span>
           <span>✓ Admin tools & analytics</span>
@@ -450,7 +527,7 @@
   </section>
 
   <!-- Slide 11: Vision -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-11">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-11" data-notes="Show the roadmap. Now = ready to launch. Q2 = scale content. Q4 = enterprise/B2B. 2027 = platform play. Adjust emphasis based on audience (investors want scale, users want features).">
     <div class="max-w-5xl">
       <h2 class="text-5xl font-bold mb-12 text-center">The Vision</h2>
       
@@ -461,8 +538,8 @@
           <div class="relative">
             <div class="absolute -left-10 w-4 h-4 rounded-full bg-purple-500"></div>
             <div class="card rounded-xl p-6">
-              <h3 class="font-semibold text-lg mb-2">Now: 316+ Courses</h3>
-              <p class="text-slate-400">Full platform live. Ready for launch.</p>
+              <h3 class="font-semibold text-lg mb-2">Now: 300+ Courses</h3>
+              <p class="text-slate-400">Full platform live. 5 learning tracks. Ready for launch.</p>
             </div>
           </div>
           <div class="relative">
@@ -483,7 +560,7 @@
             <div class="absolute -left-10 w-4 h-4 rounded-full bg-pink-500"></div>
             <div class="card rounded-xl p-6">
               <h3 class="font-semibold text-lg mb-2">2027: Platform</h3>
-              <p class="text-slate-400">Community-contributed courses. API for embedding. Personalized learning paths.</p>
+              <p class="text-slate-400">Community courses. API for embedding. Personalized learning.</p>
             </div>
           </div>
         </div>
@@ -492,15 +569,15 @@
   </section>
 
   <!-- Slide 12: CTA -->
-  <section class="slide flex-col justify-center items-center p-8" id="slide-12">
-    <div class="max-w-4xl text-center">
+  <section class="slide flex-col justify-center items-center p-8" id="slide-12" data-notes="End strong. Repeat the URL. 'Questions?' then shut up and let them ask. Have the site open on your phone ready to demo if they want to see it.">
+    <div class="text-center max-w-4xl">
       <div class="text-7xl mb-8">📚</div>
       <h2 class="text-6xl font-black mb-6 gradient-text">SkillBites</h2>
       <p class="text-3xl text-slate-300 mb-12">Learn the stuff school never taught you.</p>
       
       <div class="card rounded-2xl p-8 mb-12">
         <p class="text-2xl font-semibold mb-4">skillbites.xyz</p>
-        <p class="text-slate-400">316+ courses • 10-minute lessons • $4.99 lifetime</p>
+        <p class="text-slate-400">300+ courses • 10-minute lessons • From $5</p>
       </div>
 
       <div class="text-slate-500">
@@ -510,16 +587,24 @@
     </div>
   </section>
 
+  <!-- Speaker notes panel -->
+  <div class="speaker-notes" id="notesPanel">
+    <h4>Speaker Notes</h4>
+    <div id="notesContent"></div>
+  </div>
+
   <script>
     const slides = document.querySelectorAll('.slide');
     let currentSlide = 0;
     const totalSlides = slides.length;
+    let notesVisible = false;
 
     function showSlide(n) {
       slides[currentSlide].classList.remove('active');
       currentSlide = (n + totalSlides) % totalSlides;
       slides[currentSlide].classList.add('active');
       updateProgress();
+      updateNotes();
     }
 
     function updateProgress() {
@@ -528,15 +613,45 @@
       document.getElementById('counter').textContent = `${currentSlide + 1} / ${totalSlides}`;
     }
 
+    function updateNotes() {
+      const notes = slides[currentSlide].getAttribute('data-notes') || 'No notes for this slide.';
+      document.getElementById('notesContent').textContent = notes;
+    }
+
+    function toggleNotes() {
+      notesVisible = !notesVisible;
+      document.getElementById('notesPanel').classList.toggle('visible', notesVisible);
+    }
+
+    function toggleNotesOnly() {
+      document.body.classList.toggle('notes-only');
+      if (document.body.classList.contains('notes-only')) {
+        // Build all notes view
+        let html = '';
+        slides.forEach((slide, i) => {
+          const notes = slide.getAttribute('data-notes') || 'No notes.';
+          const title = slide.querySelector('h1, h2')?.textContent || `Slide ${i+1}`;
+          html += `<div class="speaker-notes visible" style="margin-bottom: 16px;">
+            <h4>Slide ${i+1}: ${title}</h4>
+            <div>${notes}</div>
+          </div>`;
+        });
+        document.getElementById('allNotes').innerHTML = html;
+      }
+    }
+
     function nextSlide() { showSlide(currentSlide + 1); }
     function prevSlide() { showSlide(currentSlide - 1); }
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'n' || e.key === 'N') toggleNotes();
+      if (e.key === 'm' || e.key === 'M') toggleNotesOnly();
     });
 
     document.addEventListener('click', (e) => {
+      if (e.target.closest('.notes-toggle') || e.target.closest('.speaker-notes')) return;
       const x = e.clientX;
       const width = window.innerWidth;
       if (x > width / 2) nextSlide();
@@ -544,6 +659,7 @@
     });
 
     updateProgress();
+    updateNotes();
   </script>
 </body>
 </html>
