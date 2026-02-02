@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; }
+body { 
+  width: 800px; 
+  height: 800px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background: #0f172a;
+}
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+.icon {
+  position: relative;
+  width: 200px;
+  height: 160px;
+}
+.book {
+  width: 200px;
+  height: 160px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px 20px 20px 8px;
+  position: relative;
+  box-shadow: -8px 0 0 #4c51bf;
+}
+.book::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 20px;
+  right: 25px;
+  height: 8px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+.book::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 40px;
+  right: 40px;
+  height: 8px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 4px;
+}
+.bite {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 90px;
+  height: 90px;
+  background: #0f172a;
+  border-radius: 50%;
+}
+.bite::before, .bite::after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: #0f172a;
+  border-radius: 50%;
+}
+.bite::before { bottom: 5px; left: 5px; }
+.bite::after { bottom: -5px; left: 30px; }
+.text {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 72px;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -2px;
+}
+.tagline {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  font-size: 22px;
+  color: #94a3b8;
+  margin-top: -15px;
+}
+</style>
+</head>
+<body>
+<div class="logo">
+  <div class="icon">
+    <div class="book">
+      <div class="bite"></div>
+    </div>
+  </div>
+  <div class="text">SkillBites</div>
+  <div class="tagline">Practical skills in 10 minutes</div>
+</div>
+</body>
+</html>

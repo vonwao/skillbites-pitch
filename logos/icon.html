@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; }
+body { 
+  width: 512px; 
+  height: 512px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  background: #0f172a;
+}
+.icon {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  transform: rotate(-5deg);
+}
+.book {
+  width: 55px;
+  border-radius: 5px 8px 8px 5px;
+  box-shadow: -4px 0 0 rgba(0,0,0,0.2);
+}
+.book:nth-child(1) { height: 145px; background: linear-gradient(135deg, #f472b6, #ec4899); }
+.book:nth-child(2) { height: 170px; background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+.book:nth-child(3) { height: 135px; background: linear-gradient(135deg, #60a5fa, #3b82f6); }
+.book:nth-child(4) { height: 185px; background: linear-gradient(135deg, #667eea, #764ba2); }
+.book:nth-child(5) { height: 155px; background: linear-gradient(135deg, #34d399, #10b981); }
+.book::before {
+  content: '';
+  display: block;
+  margin: 15px 10px;
+  height: 4px;
+  background: rgba(255,255,255,0.4);
+  border-radius: 2px;
+}
+</style>
+</head>
+<body>
+<div class="icon">
+  <div class="book"></div>
+  <div class="book"></div>
+  <div class="book"></div>
+  <div class="book"></div>
+  <div class="book"></div>
+</div>
+</body>
+</html>

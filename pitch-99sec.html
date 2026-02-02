@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SkillBites — 99 Second Pitch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { font-family: 'Inter', sans-serif; }
+    .slide { min-height: 100vh; display: none; }
+    .slide.active { display: flex; }
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .slide-counter {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      color: rgba(255,255,255,0.3);
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-white overflow-hidden">
+  <div class="slide-counter" id="counter"></div>
+
+  <!-- SLIDE 1: Title (5 sec) -->
+  <section class="slide active flex-col justify-center items-center p-12">
+    <div class="text-center">
+      <div class="flex justify-center gap-3 mb-8">
+        <div class="w-14 h-36 bg-gradient-to-b from-pink-500 to-pink-600 rounded-lg -rotate-6"></div>
+        <div class="w-14 h-44 bg-gradient-to-b from-purple-500 to-purple-600 rounded-lg -rotate-3"></div>
+        <div class="w-14 h-32 bg-gradient-to-b from-blue-500 to-blue-600 rounded-lg rotate-2"></div>
+        <div class="w-14 h-48 bg-gradient-to-b from-indigo-500 to-indigo-600 rounded-lg rotate-1"></div>
+        <div class="w-14 h-40 bg-gradient-to-b from-emerald-500 to-emerald-600 rounded-lg rotate-6"></div>
+      </div>
+      <h1 class="text-9xl font-black mb-6 gradient-text">SkillBites</h1>
+      <p class="text-4xl text-slate-300">Practical skills in 10 minutes</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: The Problem (20 sec) -->
+  <section class="slide flex-col justify-center items-center p-12">
+    <div class="text-center max-w-5xl">
+      <h2 class="text-7xl font-bold mb-16 leading-tight">
+        School taught you <span class="text-purple-400">calculus.</span><br/>
+        Not how to do your <span class="text-pink-400">taxes.</span>
+      </h2>
+      <div class="flex justify-center gap-6 text-3xl text-slate-400">
+        <span class="px-6 py-3 border border-slate-700 rounded-full">Salary negotiation?</span>
+        <span class="px-6 py-3 border border-slate-700 rounded-full">Reading a lease?</span>
+        <span class="px-6 py-3 border border-slate-700 rounded-full">Your 401k?</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: The Solution (20 sec) -->
+  <section class="slide flex-col justify-center items-center p-12">
+    <div class="text-center max-w-5xl">
+      <h2 class="text-6xl font-bold mb-12">
+        <span class="gradient-text">300+</span> micro-courses on<br/>the stuff that actually matters
+      </h2>
+      <div class="flex justify-center items-center gap-8 text-4xl">
+        <div class="text-center">
+          <div class="text-7xl font-black text-purple-400">10</div>
+          <div class="text-slate-400 text-2xl">minutes each</div>
+        </div>
+        <div class="text-6xl text-slate-600">→</div>
+        <div class="text-center">
+          <div class="text-7xl font-black text-green-400">$5</div>
+          <div class="text-slate-400 text-2xl">to start</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: How It Works (15 sec) -->
+  <section class="slide flex-col justify-center items-center p-12">
+    <div class="text-center max-w-5xl">
+      <h2 class="text-5xl font-bold mb-16">Real courses people actually need</h2>
+      <div class="grid grid-cols-2 gap-6 text-left max-w-4xl mx-auto">
+        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <span class="text-3xl font-semibold">How to Do Your Taxes</span>
+        </div>
+        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <span class="text-3xl font-semibold">Asking for a Raise</span>
+        </div>
+        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <span class="text-3xl font-semibold">Reading a Lease</span>
+        </div>
+        <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800">
+          <span class="text-3xl font-semibold">Mind Goes Blank?</span>
+        </div>
+      </div>
+      <p class="text-3xl text-slate-400 mt-12">Lesson + Quiz + Exercise = <span class="text-green-400">You actually learn</span></p>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: Traction (15 sec) -->
+  <section class="slide flex-col justify-center items-center p-12">
+    <div class="text-center">
+      <h2 class="text-6xl font-bold mb-16">This isn't an idea.<br/><span class="gradient-text">It's live.</span></h2>
+      <div class="flex justify-center gap-16">
+        <div class="text-center">
+          <div class="text-8xl font-black text-purple-400">300+</div>
+          <div class="text-2xl text-slate-400">courses live</div>
+        </div>
+        <div class="text-center">
+          <div class="text-8xl font-black text-blue-400">18+</div>
+          <div class="text-2xl text-slate-400">hours of content</div>
+        </div>
+        <div class="text-center">
+          <div class="text-8xl font-black text-green-400">400+</div>
+          <div class="text-2xl text-slate-400">more coming</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: CTA (15 sec) -->
+  <section class="slide flex-col justify-center items-center p-12">
+    <div class="text-center">
+      <h2 class="text-5xl font-bold mb-8">Try it right now</h2>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=280x280&data=https://skillbites.xyz&bgcolor=0f172a&color=ffffff" alt="QR" class="mx-auto rounded-2xl mb-8">
+      <p class="text-5xl font-bold gradient-text mb-4">skillbites.xyz</p>
+      <p class="text-3xl text-slate-400">Learn the stuff school never taught you.</p>
+    </div>
+  </section>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    const total = slides.length;
+
+    function show(n) {
+      slides[current].classList.remove('active');
+      current = (n + total) % total;
+      slides[current].classList.add('active');
+      document.getElementById('counter').textContent = `${current + 1} / ${total}`;
+    }
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ') show(current + 1);
+      if (e.key === 'ArrowLeft') show(current - 1);
+    });
+
+    document.addEventListener('click', e => {
+      if (e.clientX > window.innerWidth / 2) show(current + 1);
+      else show(current - 1);
+    });
+
+    show(0);
+  </script>
+</body>
+</html>
