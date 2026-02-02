@@ -50,14 +50,26 @@
       padding: 0.75rem 1rem;
       opacity: 0.55;
     }
-    /* Logo bars */
-    .logo-bars {
+    /* Logo - books */
+    .logo-icon {
       display: flex;
+      gap: 8px;
+      align-items: flex-end;
+      transform: rotate(-5deg);
       justify-content: center;
-      gap: 6px;
     }
-    .logo-bar {
-      border-radius: 6px;
+    .book {
+      border-radius: 4px 6px 6px 4px;
+      box-shadow: -3px 0 0 rgba(0,0,0,0.2);
+      position: relative;
+    }
+    .book::before {
+      content: '';
+      display: block;
+      margin: 12px 8px;
+      height: 3px;
+      background: rgba(255,255,255,0.4);
+      border-radius: 2px;
     }
   </style>
 </head>
@@ -67,12 +79,12 @@
   <!-- SLIDE 1: Title (5 sec) -->
   <section class="slide active flex-col justify-center items-center p-12">
     <div class="text-center">
-      <div class="logo-bars mb-8">
-        <div class="logo-bar w-10 h-24 bg-gradient-to-b from-emerald-400 to-emerald-600 rotate-6"></div>
-        <div class="logo-bar w-10 h-32 bg-gradient-to-b from-indigo-400 to-indigo-600 rotate-1"></div>
-        <div class="logo-bar w-10 h-20 bg-gradient-to-b from-blue-400 to-blue-600 -rotate-2"></div>
-        <div class="logo-bar w-10 h-28 bg-gradient-to-b from-purple-400 to-purple-600 -rotate-3"></div>
-        <div class="logo-bar w-10 h-24 bg-gradient-to-b from-pink-400 to-pink-600 -rotate-6"></div>
+      <div class="logo-icon mb-8">
+        <div class="book w-11 h-28 bg-gradient-to-br from-pink-400 to-pink-600"></div>
+        <div class="book w-11 h-36 bg-gradient-to-br from-violet-400 to-violet-600"></div>
+        <div class="book w-11 h-26 bg-gradient-to-br from-blue-400 to-blue-500"></div>
+        <div class="book w-11 h-40 bg-gradient-to-br from-indigo-500 to-purple-600"></div>
+        <div class="book w-11 h-32 bg-gradient-to-br from-emerald-400 to-emerald-600"></div>
       </div>
       <h1 class="text-9xl font-black mb-6 gradient-text">SkillBites</h1>
       <p class="text-4xl text-slate-300">Practical skills in 10 minutes</p>
@@ -125,12 +137,12 @@
   <section class="slide flex-col justify-center items-center p-12">
     <div class="text-center max-w-5xl">
       <!-- Mini logo -->
-      <div class="logo-bars mb-6 scale-50 origin-center">
-        <div class="logo-bar w-10 h-24 bg-gradient-to-b from-emerald-400 to-emerald-600 rotate-6"></div>
-        <div class="logo-bar w-10 h-32 bg-gradient-to-b from-indigo-400 to-indigo-600 rotate-1"></div>
-        <div class="logo-bar w-10 h-20 bg-gradient-to-b from-blue-400 to-blue-600 -rotate-2"></div>
-        <div class="logo-bar w-10 h-28 bg-gradient-to-b from-purple-400 to-purple-600 -rotate-3"></div>
-        <div class="logo-bar w-10 h-24 bg-gradient-to-b from-pink-400 to-pink-600 -rotate-6"></div>
+      <div class="logo-icon mb-6 scale-50 origin-center">
+        <div class="book w-11 h-28 bg-gradient-to-br from-pink-400 to-pink-600"></div>
+        <div class="book w-11 h-36 bg-gradient-to-br from-violet-400 to-violet-600"></div>
+        <div class="book w-11 h-26 bg-gradient-to-br from-blue-400 to-blue-500"></div>
+        <div class="book w-11 h-40 bg-gradient-to-br from-indigo-500 to-purple-600"></div>
+        <div class="book w-11 h-32 bg-gradient-to-br from-emerald-400 to-emerald-600"></div>
       </div>
       <h2 class="text-6xl font-bold mb-12">
         <span class="gradient-text">300+</span> micro-courses on<br/>the stuff that actually matters
